@@ -11,7 +11,9 @@ from .serializers import RegisterUserSerializer
 class RegisterUserView(APIView):
     @swagger_auto_schema(request_body=RegisterUserSerializer())
     def post(self, request):
+        # print(request.data)
         serializer = RegisterUserSerializer(data=request.data)
+        # print(serializer)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response("Вы успешно зарегистрировались", status=201)
