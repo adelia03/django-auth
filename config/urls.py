@@ -27,11 +27,11 @@ from rest_framework_simplejwt.views import (
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 
-swagger_view = get_schema_view(
+schema_view = get_schema_view(
     openapi.Info(
-        title="Blog API",
+        title="Python 21 API",
+        description="makers bootcamp",
         default_version="v1",
-        description="blog API"
     ),
     public=True
 )
@@ -41,7 +41,7 @@ swagger_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('docs/', swagger_view.with_ui('swagger', cache_timeout=0)),
+    path('docs/', schema_view.with_ui("swagger")),
     path('account/register/', RegisterUserView.as_view()),
     path('account/delete/<str:email>/', DeleteUserView.as_view()),
     path('account/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
